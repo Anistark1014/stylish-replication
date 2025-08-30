@@ -50,10 +50,10 @@ const Organization = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-background">
-      {/* Header */}
-      <div className="bg-card border-b border-border">
-        <div className="max-w-6xl mx-auto px-6 py-8">
+    <div className="flex-1 p-6 overflow-y-auto">
+      <div className="max-w-6xl mx-auto space-y-6">
+        {/* Header */}
+        <div className="bg-card border border-border rounded-lg p-6">
           <div className="flex items-center gap-6">
             <div className="w-24 h-24 bg-gradient-to-br from-primary to-primary/60 rounded-2xl flex items-center justify-center">
               <span className="text-2xl font-bold text-primary-foreground">MIT</span>
@@ -72,10 +72,9 @@ const Organization = () => {
             </Button>
           </div>
         </div>
-      </div>
 
-      {/* Navigation Tabs */}
-      <div className="max-w-6xl mx-auto px-6">
+        {/* Navigation Tabs */}
+        <div>
         <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
           <TabsList className="grid w-full grid-cols-5 bg-card border border-border">
             <TabsTrigger value="feed" className="data-[state=active]:bg-secondary">Feed</TabsTrigger>
@@ -224,6 +223,7 @@ const Organization = () => {
             </div>
           </TabsContent>
         </Tabs>
+        </div>
       </div>
     </div>
   );
