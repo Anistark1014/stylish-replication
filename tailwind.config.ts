@@ -61,7 +61,20 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
+				},
+				social: {
+					hover: 'hsl(var(--hover-overlay))',
+					glass: 'hsl(var(--glass-bg))',
+					notification: 'hsl(var(--notification-dot))'
 				}
+			},
+			backgroundImage: {
+				'social-gradient': 'var(--social-gradient)',
+				'story-gradient': 'var(--story-gradient)'
+			},
+			boxShadow: {
+				'soft': 'var(--shadow-soft)',
+				'strong': 'var(--shadow-strong)'
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
