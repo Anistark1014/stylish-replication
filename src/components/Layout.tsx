@@ -8,12 +8,12 @@ interface LayoutProps {
 
 const Layout = ({ children, showMessagesSidebar = true }: LayoutProps) => {
   return (
-    <div className="min-h-screen flex" style={{ background: 'var(--background-gradient)' }}>
+    <div className="min-h-screen bg-background flex">
       {/* Left Sidebar - Profile & Navigation */}
       <ProfileSidebar />
       
       {/* Main Content Area */}
-      <div className="flex-1 flex flex-col glassmorphic">
+      <div className="flex-1 flex flex-col">
         {children}
       </div>
       
