@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Home, MessageCircle, Bell, Settings, MoreHorizontal } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import profileImage from '@/assets/profile-jessica.jpg';
 
 const ProfileSidebar = () => {
@@ -71,6 +72,29 @@ const ProfileSidebar = () => {
       <div className="px-3 mb-6">
         {navigationItems.map((item) => {
           const Icon = item.icon;
+          
+          if (item.name === 'Messages') {
+            return (
+              <Link key={item.name} to="/chat">
+                <Button
+                  variant={activeNav === item.name ? "secondary" : "ghost"}
+                  className={`w-full justify-start mb-2 relative h-12 ${
+                    activeNav === item.name 
+                      ? "bg-secondary text-secondary-foreground font-medium" 
+                      : "text-muted-foreground hover:text-foreground hover:bg-social-hover"
+                  }`}
+                  onClick={() => setActiveNav(item.name)}
+                >
+                  <Icon className="w-5 h-5 mr-3" />
+                  {item.name}
+                  {item.hasNotification && (
+                    <div className="absolute right-3 w-2 h-2 bg-social-notification rounded-full"></div>
+                  )}
+                </Button>
+              </Link>
+            );
+          }
+          
           return (
             <Button
               key={item.name}

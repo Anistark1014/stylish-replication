@@ -46,6 +46,16 @@ All colors MUST be HSL.
     --glass-bg: 220 13% 12% / 0.8;
     --notification-dot: 0 100% 60%;
     
+    /* Custom color extensions for social app */
+    --social-hover: 214 100% 97%;
+    --social-notification: 0 84% 60%;
+    
+    /* Chat interface grays */
+    --gray-850: 215 25% 12%;
+    --gray-800: 217 32% 16%;
+    --gray-700: 215 20% 21%;
+    --gray-900: 220 13% 9%;
+    
     /* Shadows */
     --shadow-soft: 0 4px 20px -2px hsl(220 13% 5% / 0.3);
     --shadow-strong: 0 10px 40px -5px hsl(220 13% 5% / 0.5);
@@ -103,6 +113,16 @@ All colors MUST be HSL.
     --sidebar-accent-foreground: 240 4.8% 95.9%;
     --sidebar-border: 240 3.7% 15.9%;
     --sidebar-ring: 217.2 91.2% 59.8%;
+    
+    /* Custom color extensions for social app (dark mode) */
+    --social-hover: 240 4% 16%;
+    --social-notification: 0 84% 60%;
+    
+    /* Chat interface grays (dark mode) */
+    --gray-850: 215 25% 12%;
+    --gray-800: 217 32% 16%;
+    --gray-700: 215 20% 21%;
+    --gray-900: 220 13% 9%;
   }
 }
 

@@ -63,9 +63,15 @@ export default {
 					ring: 'hsl(var(--sidebar-ring))'
 				},
 				social: {
-					hover: 'hsl(var(--hover-overlay))',
+					hover: 'hsl(var(--social-hover))',
 					glass: 'hsl(var(--glass-bg))',
-					notification: 'hsl(var(--notification-dot))'
+					notification: 'hsl(var(--social-notification))'
+				},
+				gray: {
+					'700': 'hsl(var(--gray-700))',
+					'800': 'hsl(var(--gray-800))',
+					'850': 'hsl(var(--gray-850))',
+					'900': 'hsl(var(--gray-900))'
 				}
 			},
 			backgroundImage: {
