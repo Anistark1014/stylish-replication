@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Layout from "./components/Layout";
 import Index from "./pages/Index";
 import Chat from "./pages/Chat";
+import MatesWithBenefits from "./pages/MatesWithBenefits";
 import Organization from "./pages/Organization";
 import Notes from "./pages/Notes";
 import Profile from "./pages/Profile";
@@ -22,6 +23,7 @@ const App = () => (
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/chat" element={<Chat />} />
+          <Route path="/mates-with-benefits" element={<MatesWithBenefits />} />
           <Route path="/organization" element={<Layout showMessagesSidebar={false}><Organization /></Layout>} />
           <Route path="/notes" element={<Layout showMessagesSidebar={false}><Notes /></Layout>} />
           <Route path="/profile" element={<Layout showMessagesSidebar={false}><Profile /></Layout>} />

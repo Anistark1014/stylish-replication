@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { Home, MessageCircle, Bell, Settings, MoreHorizontal, Building, BookOpen, User } from 'lucide-react';
+import { Home, MessageCircle, Bell, Settings, MoreHorizontal, Building, BookOpen, User, Heart } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import profileImage from '@/assets/profile-jessica.jpg';
 
@@ -11,6 +11,7 @@ const ProfileSidebar = () => {
   const navigationItems = [
     { name: 'Feed', icon: Home },
     { name: 'Messages', icon: MessageCircle },
+    { name: 'Mates with Benefits', icon: Heart },
     { name: 'Organization', icon: Building },
     { name: 'Notes', icon: BookOpen },
     { name: 'Profile', icon: User },
@@ -26,7 +27,7 @@ const ProfileSidebar = () => {
   ];
 
   return (
-    <div className="w-80 bg-card border-r border-border h-screen flex flex-col">
+    <div className="w-64 lg:w-80 bg-card border-r border-border h-screen flex flex-col">
       {/* Profile Section */}
       <div className="p-6">
         <div className="flex items-center gap-4 mb-6">
@@ -93,6 +94,26 @@ const ProfileSidebar = () => {
                   {item.hasNotification && (
                     <div className="absolute right-3 w-2 h-2 bg-social-notification rounded-full"></div>
                   )}
+                </Button>
+              </Link>
+            );
+          }
+
+          if (item.name === 'Mates with Benefits') {
+            return (
+              <Link key={item.name} to="/mates-with-benefits">
+                <Button
+                  variant={activeNav === item.name ? "secondary" : "ghost"}
+                  className={`w-full justify-start mb-2 relative h-12 ${
+                    activeNav === item.name 
+                      ? "bg-secondary text-secondary-foreground font-medium" 
+                      : "text-muted-foreground hover:text-foreground hover:bg-social-hover"
+                  }`}
+                  onClick={() => setActiveNav(item.name)}
+                >
+                  <Icon className="w-5 h-5 mr-3" />
+                  <span className="hidden xl:inline">{item.name}</span>
+                  <span className="xl:hidden">MwB</span>
                 </Button>
               </Link>
             );
