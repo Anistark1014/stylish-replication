@@ -50,24 +50,24 @@ const Organization = () => {
   ];
 
   return (
-    <div className="flex-1 p-6 overflow-y-auto">
+    <div className="flex-1 p-3 sm:p-6 overflow-y-auto">
       <div className="max-w-6xl mx-auto space-y-6">
         {/* Header */}
-        <div className="bg-card border border-border rounded-lg p-6">
-          <div className="flex items-center gap-6">
-            <div className="w-24 h-24 bg-gradient-to-br from-primary to-primary/60 rounded-2xl flex items-center justify-center">
-              <span className="text-2xl font-bold text-primary-foreground">MIT</span>
+        <div className="bg-card border border-border rounded-lg p-4 sm:p-6">
+          <div className="flex items-center gap-4 sm:gap-6 flex-col sm:flex-row">
+            <div className="w-20 h-20 sm:w-24 sm:h-24 bg-gradient-to-br from-primary to-primary/60 rounded-2xl flex items-center justify-center">
+              <span className="text-xl sm:text-2xl font-bold text-primary-foreground">MIT</span>
             </div>
-            <div className="flex-1">
-              <h1 className="text-3xl font-bold text-foreground mb-2">Massachusetts Institute of Technology</h1>
+            <div className="flex-1 text-center sm:text-left">
+              <h1 className="text-2xl sm:text-3xl font-bold text-foreground mb-2">Massachusetts Institute of Technology</h1>
               <p className="text-muted-foreground mb-3">Premier institution for technology and innovation</p>
-              <div className="flex gap-4 text-sm">
+              <div className="flex gap-3 sm:gap-4 text-sm justify-center sm:justify-start flex-wrap">
                 <span className="text-foreground"><strong>25,847</strong> Students</span>
                 <span className="text-foreground"><strong>1,045</strong> Faculty</span>
                 <span className="text-foreground"><strong>156</strong> Programs</span>
               </div>
             </div>
-            <Button className="bg-primary text-primary-foreground hover:bg-primary/90">
+            <Button className="bg-primary text-primary-foreground hover:bg-primary/90 w-full sm:w-auto">
               Follow
             </Button>
           </div>
@@ -76,7 +76,7 @@ const Organization = () => {
         {/* Navigation Tabs */}
         <div>
         <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-          <TabsList className="grid w-full grid-cols-5 bg-card border border-border">
+          <TabsList className="grid w-full grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 bg-card border border-border">
             <TabsTrigger value="feed" className="data-[state=active]:bg-secondary">Feed</TabsTrigger>
             <TabsTrigger value="notes" className="data-[state=active]:bg-secondary">
               <Link to="/notes" className="flex items-center gap-2">
@@ -91,8 +91,8 @@ const Organization = () => {
 
           {/* Feed Tab */}
           <TabsContent value="feed" className="mt-6">
-            <div className="grid grid-cols-3 gap-6">
-              <div className="col-span-2 space-y-6">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+              <div className="lg:col-span-2 space-y-6">
                 {posts.map((post) => (
                   <Card key={post.id} className="bg-card border-border">
                     <CardHeader>
@@ -160,7 +160,7 @@ const Organization = () => {
 
           {/* Clubs Tab */}
           <TabsContent value="clubs" className="mt-6">
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {clubs.map((club, index) => (
                 <Card key={index} className="bg-card border-border">
                   <CardHeader>

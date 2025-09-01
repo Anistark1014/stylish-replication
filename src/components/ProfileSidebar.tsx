@@ -27,7 +27,7 @@ const ProfileSidebar = () => {
   ];
 
   return (
-    <div className="w-64 lg:w-80 bg-card border-r border-border h-screen flex flex-col">
+    <div className="w-64 xl:w-80 bg-card border-r border-border h-screen flex flex-col">
       {/* Profile Section */}
       <div className="p-6">
         <div className="flex items-center gap-4 mb-6">
@@ -56,17 +56,17 @@ const ProfileSidebar = () => {
           Guiding the next generation through the journey of health and knowledge!
         </p>
 
-        <div className="flex gap-6 text-center">
+        <div className="flex gap-3 xl:gap-6 text-center">
           <div>
-            <p className="font-semibold text-foreground">368</p>
+            <p className="font-semibold text-foreground text-sm xl:text-base">368</p>
             <p className="text-xs text-muted-foreground">Posts</p>
           </div>
           <div>
-            <p className="font-semibold text-foreground">184.3K</p>
+            <p className="font-semibold text-foreground text-sm xl:text-base">184.3K</p>
             <p className="text-xs text-muted-foreground">Followers</p>
           </div>
           <div>
-            <p className="font-semibold text-foreground">1.04M</p>
+            <p className="font-semibold text-foreground text-sm xl:text-base">1.04M</p>
             <p className="text-xs text-muted-foreground">Following</p>
           </div>
         </div>

@@ -114,7 +114,7 @@ const Notes = () => {
   });
 
   return (
-    <div className="flex-1 p-6 overflow-y-auto">
+    <div className="flex-1 p-3 sm:p-6 overflow-y-auto">
       <div className="max-w-6xl mx-auto space-y-6">
         {/* Header */}
         <div className="mb-6">
@@ -122,9 +122,9 @@ const Notes = () => {
           <p className="text-muted-foreground">Access and share academic resources with your peers</p>
         </div>
 
-        <div className="grid grid-cols-5 gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-6">
           {/* Filters Sidebar */}
-          <div className="space-y-4">
+          <div className="lg:col-span-1 space-y-4">
             <Card className="bg-card border-border">
               <CardHeader>
                 <CardTitle className="text-sm text-foreground">Filters</CardTitle>
@@ -213,11 +213,11 @@ const Notes = () => {
           </div>
 
           {/* Main Content */}
-          <div className="col-span-4 space-y-6">
+          <div className="lg:col-span-4 space-y-6">
             {/* Search and Filters */}
             <Card className="bg-card border-border">
               <CardContent className="p-4">
-                <div className="flex gap-4">
+                <div className="flex gap-4 flex-col sm:flex-row">
                   <div className="flex-1 relative">
                     <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
                     <Input
@@ -227,28 +227,30 @@ const Notes = () => {
                       className="pl-10"
                     />
                   </div>
-                  <Select value={selectedType} onValueChange={setSelectedType}>
-                    <SelectTrigger className="w-40">
-                      <SelectValue placeholder="Type" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="all">All Types</SelectItem>
-                      <SelectItem value="document">Documents</SelectItem>
-                      <SelectItem value="video">Videos</SelectItem>
-                      <SelectItem value="image">Images</SelectItem>
-                      <SelectItem value="link">Links</SelectItem>
-                    </SelectContent>
-                  </Select>
-                  <Button variant="outline">
-                    <Filter className="w-4 h-4 mr-2" />
-                    Filters
-                  </Button>
+                  <div className="flex gap-2">
+                    <Select value={selectedType} onValueChange={setSelectedType}>
+                      <SelectTrigger className="w-32 sm:w-40">
+                        <SelectValue placeholder="Type" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="all">All Types</SelectItem>
+                        <SelectItem value="document">Documents</SelectItem>
+                        <SelectItem value="video">Videos</SelectItem>
+                        <SelectItem value="image">Images</SelectItem>
+                        <SelectItem value="link">Links</SelectItem>
+                      </SelectContent>
+                    </Select>
+                    <Button variant="outline" className="lg:hidden">
+                      <Filter className="w-4 h-4 mr-2" />
+                      Filters
+                    </Button>
+                  </div>
                 </div>
               </CardContent>
             </Card>
 
             {/* Notes Grid */}
-            <div className="grid grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
               {filteredNotes.map((note) => (
                 <Card key={note.id} className="bg-card border-border hover:bg-social-hover transition-colors aspect-[2/3]">
                   <CardContent className="p-4 h-full flex flex-col">

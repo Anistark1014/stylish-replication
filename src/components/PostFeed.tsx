@@ -8,7 +8,7 @@ const PostFeed = () => {
   const [bookmarked, setBookmarked] = useState(false);
 
   return (
-    <div className="flex-1 max-w-2xl">
+    <div className="flex-1 max-w-2xl mx-auto w-full">
       {/* Create Post */}
       <div className="bg-card rounded-xl border border-border p-6 mb-6">
         <div className="flex items-center gap-3 mb-4">
@@ -22,22 +22,25 @@ const PostFeed = () => {
           />
         </div>
         
-        <div className="flex items-center justify-between">
-          <div className="flex items-center gap-4">
-            <Button variant="ghost" size="sm" className="text-muted-foreground hover:text-foreground">
-              <Image className="w-4 h-4 mr-2" />
-              Media Content
+        <div className="flex items-center justify-between flex-wrap gap-3">
+          <div className="flex items-center gap-2 sm:gap-4 flex-wrap">
+            <Button variant="ghost" size="sm" className="text-muted-foreground hover:text-foreground text-xs sm:text-sm">
+              <Image className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2" />
+              <span className="hidden sm:inline">Media Content</span>
+              <span className="sm:hidden">Media</span>
             </Button>
-            <Button variant="ghost" size="sm" className="text-muted-foreground hover:text-foreground">
-              <Mic className="w-4 h-4 mr-2" />
-              Hashtags
+            <Button variant="ghost" size="sm" className="text-muted-foreground hover:text-foreground text-xs sm:text-sm">
+              <Mic className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2" />
+              <span className="hidden sm:inline">Hashtags</span>
+              <span className="sm:hidden">Tags</span>
             </Button>
-            <Button variant="ghost" size="sm" className="text-muted-foreground hover:text-foreground">
-              <Calendar className="w-4 h-4 mr-2" />
-              Schedule
+            <Button variant="ghost" size="sm" className="text-muted-foreground hover:text-foreground text-xs sm:text-sm">
+              <Calendar className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2" />
+              <span className="hidden sm:inline">Schedule</span>
+              <span className="sm:hidden">Schedule</span>
             </Button>
           </div>
-          <Button className="bg-primary hover:bg-primary/90 text-primary-foreground px-6">
+          <Button className="bg-primary hover:bg-primary/90 text-primary-foreground px-4 sm:px-6 text-sm">
             Post
           </Button>
         </div>

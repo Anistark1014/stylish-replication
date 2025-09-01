@@ -60,7 +60,7 @@ const MessagesSidebar = () => {
   ];
 
   return (
-    <div className="w-80 bg-card border-l border-border h-screen flex flex-col">
+    <div className="w-72 xl:w-80 bg-card border-l border-border h-screen flex flex-col">
       {/* Header */}
       <div className="p-4 border-b border-border">
         <div className="flex items-center justify-between mb-4">

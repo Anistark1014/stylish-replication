@@ -114,14 +114,14 @@ const MatesWithBenefits = () => {
     <Layout showMessagesSidebar={false}>
       <div className="min-h-screen bg-background">
         {/* Header */}
-        <div className="bg-card border-b border-border px-4 py-6 sm:px-6 lg:px-8">
+        <div className="bg-card border-b border-border px-3 py-4 sm:px-6 sm:py-6 lg:px-8">
           <div className="max-w-7xl mx-auto">
-            <h1 className="text-3xl font-bold text-foreground mb-2">Mates with Benefits</h1>
-            <p className="text-muted-foreground mb-6">Discover services offered by your fellow students</p>
+            <h1 className="text-2xl sm:text-3xl font-bold text-foreground mb-2">Mates with Benefits</h1>
+            <p className="text-muted-foreground mb-4 sm:mb-6 text-sm sm:text-base">Discover services offered by your fellow students</p>
             
             {/* Search Bar */}
-            <div className="flex flex-col sm:flex-row gap-4 items-center">
-              <div className="relative flex-1 max-w-md">
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 items-stretch sm:items-center">
+              <div className="relative flex-1 max-w-full sm:max-w-md">
                 <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
                 <Input
                   placeholder="Search services..."
@@ -130,7 +130,7 @@ const MatesWithBenefits = () => {
                   className="pl-10"
                 />
               </div>
-              <Button variant="outline" className="flex items-center gap-2">
+              <Button variant="outline" className="flex items-center justify-center gap-2 w-full sm:w-auto">
                 <Filter className="w-4 h-4" />
                 Filters
               </Button>
@@ -139,32 +139,32 @@ const MatesWithBenefits = () => {
         </div>
 
         {/* Category Tabs */}
-        <div className="px-4 py-6 sm:px-6 lg:px-8">
+        <div className="px-3 py-4 sm:px-6 sm:py-6 lg:px-8">
           <div className="max-w-7xl mx-auto">
             <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-              <TabsList className="grid w-full grid-cols-2 lg:grid-cols-5 mb-8">
-                <TabsTrigger value="all" className="flex items-center gap-2">
-                  <Heart className="w-4 h-4" />
+              <TabsList className="grid w-full grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 mb-6 sm:mb-8 h-auto">
+                <TabsTrigger value="all" className="flex items-center gap-1 sm:gap-2 text-xs sm:text-sm p-2 sm:p-3">
+                  <Heart className="w-3 h-3 sm:w-4 sm:h-4" />
                   <span className="hidden sm:inline">All Services</span>
                   <span className="sm:hidden">All</span>
                 </TabsTrigger>
-                <TabsTrigger value="academic" className="flex items-center gap-2">
-                  <BookOpen className="w-4 h-4" />
+                <TabsTrigger value="academic" className="flex items-center gap-1 sm:gap-2 text-xs sm:text-sm p-2 sm:p-3">
+                  <BookOpen className="w-3 h-3 sm:w-4 sm:h-4" />
                   <span className="hidden sm:inline">Academic Ace</span>
                   <span className="sm:hidden">Academic</span>
                 </TabsTrigger>
-                <TabsTrigger value="olx" className="flex items-center gap-2">
-                  <ShoppingCart className="w-4 h-4" />
+                <TabsTrigger value="olx" className="flex items-center gap-1 sm:gap-2 text-xs sm:text-sm p-2 sm:p-3">
+                  <ShoppingCart className="w-3 h-3 sm:w-4 sm:h-4" />
                   <span className="hidden sm:inline">Mini OLX</span>
                   <span className="sm:hidden">Shop</span>
                 </TabsTrigger>
-                <TabsTrigger value="broker" className="flex items-center gap-2">
-                  <Home className="w-4 h-4" />
+                <TabsTrigger value="broker" className="flex items-center gap-1 sm:gap-2 text-xs sm:text-sm p-2 sm:p-3">
+                  <Home className="w-3 h-3 sm:w-4 sm:h-4" />
                   <span className="hidden sm:inline">MateBroker</span>
                   <span className="sm:hidden">Rooms</span>
                 </TabsTrigger>
-                <TabsTrigger value="freelance" className="flex items-center gap-2">
-                  <Briefcase className="w-4 h-4" />
+                <TabsTrigger value="freelance" className="flex items-center gap-1 sm:gap-2 text-xs sm:text-sm p-2 sm:p-3">
+                  <Briefcase className="w-3 h-3 sm:w-4 sm:h-4" />
                   <span className="hidden sm:inline">Matelancer</span>
                   <span className="sm:hidden">Services</span>
                 </TabsTrigger>
@@ -172,54 +172,54 @@ const MatesWithBenefits = () => {
 
               <TabsContent value={activeTab} className="mt-0">
                 {/* Service Listings Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
                   {filteredListings.map((listing) => (
                     <Card key={listing.id} className="hover:shadow-lg transition-shadow duration-200 bg-card border-border">
-                      <CardHeader className="pb-3">
+                      <CardHeader className="pb-3 p-4 sm:p-6">
                         <div className="flex justify-between items-start gap-2">
-                          <CardTitle className="text-lg font-semibold line-clamp-2 text-foreground">
+                          <CardTitle className="text-base sm:text-lg font-semibold line-clamp-2 text-foreground">
                             {listing.title}
                           </CardTitle>
-                          <Badge variant="secondary" className="shrink-0">
+                          <Badge variant="secondary" className="shrink-0 text-xs">
                             {listing.category === 'academic' && 'Academic'}
                             {listing.category === 'olx' && 'For Sale'}
                             {listing.category === 'broker' && 'Housing'}
                             {listing.category === 'freelance' && 'Service'}
                           </Badge>
                         </div>
-                        <p className="text-sm text-muted-foreground line-clamp-3">
+                        <p className="text-xs sm:text-sm text-muted-foreground line-clamp-3">
                           {listing.description}
                         </p>
                       </CardHeader>
                       
-                      <CardContent className="space-y-4">
+                      <CardContent className="space-y-3 sm:space-y-4 p-4 sm:p-6 pt-0">
                         {/* Price */}
-                        <div className="text-xl font-bold text-primary">
+                        <div className="text-lg sm:text-xl font-bold text-primary">
                           {listing.price}
                         </div>
 
                         {/* Rating and Reviews */}
                         <div className="flex items-center gap-2">
                           <div className="flex items-center gap-1">
-                            <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-                            <span className="text-sm font-medium">{listing.rating}</span>
+                            <Star className="w-3 h-3 sm:w-4 sm:h-4 fill-yellow-400 text-yellow-400" />
+                            <span className="text-xs sm:text-sm font-medium">{listing.rating}</span>
                           </div>
-                          <span className="text-sm text-muted-foreground">
+                          <span className="text-xs sm:text-sm text-muted-foreground">
                             ({listing.reviewCount} reviews)
                           </span>
                         </div>
 
                         {/* Seller Info */}
                         <div className="flex items-center justify-between">
-                          <span className="text-sm text-muted-foreground">
+                          <span className="text-xs sm:text-sm text-muted-foreground">
                             by {listing.isAnonymous ? '***' : listing.seller}
                           </span>
-                          <div className="flex items-center gap-2">
+                          <div className="flex items-center gap-1 sm:gap-2">
                             <Button
                               variant="ghost"
                               size="sm"
                               onClick={() => handleVote(listing.id, 'up')}
-                              className="flex items-center gap-1 text-green-600 hover:text-green-700 hover:bg-green-50"
+                              className="flex items-center gap-1 text-green-600 hover:text-green-700 hover:bg-green-50 p-1 sm:p-2"
                             >
                               <ThumbsUp className="w-3 h-3" />
                               <span className="text-xs">{listing.upvotes}</span>
@@ -228,7 +228,7 @@ const MatesWithBenefits = () => {
                               variant="ghost"
                               size="sm"
                               onClick={() => handleVote(listing.id, 'down')}
-                              className="flex items-center gap-1 text-red-600 hover:text-red-700 hover:bg-red-50"
+                              className="flex items-center gap-1 text-red-600 hover:text-red-700 hover:bg-red-50 p-1 sm:p-2"
                             >
                               <ThumbsDown className="w-3 h-3" />
                               <span className="text-xs">{listing.downvotes}</span>
@@ -239,7 +239,7 @@ const MatesWithBenefits = () => {
                         {/* Action Button */}
                         <Button 
                           onClick={() => handleContactSeller(listing)}
-                          className="w-full flex items-center gap-2"
+                          className="w-full flex items-center justify-center gap-2 text-sm"
                         >
                           <MessageCircle className="w-4 h-4" />
                           Contact Seller
@@ -266,10 +266,10 @@ const MatesWithBenefits = () => {
 
         {/* Floating Add Button */}
         <Button
-          className="fixed bottom-6 right-6 rounded-full w-14 h-14 shadow-lg hover:shadow-xl transition-shadow duration-200 z-50"
+          className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 rounded-full w-12 h-12 sm:w-14 sm:h-14 shadow-lg hover:shadow-xl transition-shadow duration-200 z-50"
           size="icon"
         >
-          <span className="text-2xl">+</span>
+          <span className="text-xl sm:text-2xl">+</span>
         </Button>
       </div>
     </Layout>
