@@ -1,23 +1,29 @@
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { Home, MessageCircle, Bell, Settings, MoreHorizontal, Building, BookOpen, User, Heart } from 'lucide-react';
+import { Home, MessageCircle, Bell, Settings, MoreHorizontal, Building, BookOpen, User, Heart, LogOut } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { useAuth } from '@/hooks/useAuth';
 import profileImage from '@/assets/profile-jessica.jpg';
 
 const ProfileSidebar = () => {
+  const { user, signOut } = useAuth();
   const [activeNav, setActiveNav] = useState('Feed');
 
   const navigationItems = [
-    { name: 'Feed', icon: Home },
-    { name: 'Messages', icon: MessageCircle },
-    { name: 'Mates with Benefits', icon: Heart },
-    { name: 'Organization', icon: Building },
-    { name: 'Notes', icon: BookOpen },
-    { name: 'Profile', icon: User },
+    { name: 'Feed', icon: Home, href: '/' },
+    { name: 'Messages', icon: MessageCircle, href: '/chat' },
+    { name: 'Mates with Benefits', icon: Heart, href: '/mates-with-benefits' },
+    { name: 'Organization', icon: Building, href: '/organization' },
+    { name: 'Notes', icon: BookOpen, href: '/notes' },
+    { name: 'Profile', icon: User, href: '/profile' },
     { name: 'Notifications', icon: Bell, hasNotification: true },
     { name: 'Settings', icon: Settings },
   ];
+
+  const handleSignOut = async () => {
+    await signOut();
+  };
 
   const contacts = [
     { name: 'Jak Lozano', status: 'liked you story', time: '3h', hasStory: true },
@@ -34,7 +40,7 @@ const ProfileSidebar = () => {
           <div className="relative">
             <img
               src={profileImage}
-              alt="Jessica Cambridge"
+              alt={user?.user_metadata?.full_name || 'User'}
               className="w-16 h-16 rounded-full object-cover"
             />
             <div className="absolute -bottom-1 -right-1 w-5 h-5 bg-primary rounded-full flex items-center justify-center">
@@ -43,17 +49,17 @@ const ProfileSidebar = () => {
           </div>
           <div className="flex-1">
             <div className="flex items-center gap-2">
-              <h2 className="font-semibold text-foreground">Jessica Cambridge</h2>
+              <h2 className="font-semibold text-foreground">{user?.user_metadata?.full_name || 'User'}</h2>
               <Badge variant="secondary" className="text-xs px-2 py-0.5 bg-primary/10 text-primary border-primary/20">
                 ✓
               </Badge>
             </div>
-            <p className="text-sm text-muted-foreground">College Doctor</p>
+            <p className="text-sm text-muted-foreground">@{user?.user_metadata?.username || user?.email?.split('@')[0]}</p>
           </div>
         </div>
 
         <p className="text-sm text-muted-foreground mb-4 leading-relaxed">
-          Guiding the next generation through the journey of health and knowledge!
+          Welcome to CampusMate! Connect, collaborate, and grow together.
         </p>
 
         <div className="flex gap-3 xl:gap-6 text-center">
@@ -77,9 +83,9 @@ const ProfileSidebar = () => {
         {navigationItems.map((item) => {
           const Icon = item.icon;
           
-          if (item.name === 'Messages') {
+          if (item.href) {
             return (
-              <Link key={item.name} to="/chat">
+              <Link key={item.name} to={item.href}>
                 <Button
                   variant={activeNav === item.name ? "secondary" : "ghost"}
                   className={`w-full justify-start mb-2 relative h-12 ${
@@ -90,87 +96,15 @@ const ProfileSidebar = () => {
                   onClick={() => setActiveNav(item.name)}
                 >
                   <Icon className="w-5 h-5 mr-3" />
-                  {item.name}
+                  <span className={item.name === 'Mates with Benefits' ? "hidden xl:inline" : ""}>
+                    {item.name}
+                  </span>
+                  {item.name === 'Mates with Benefits' && (
+                    <span className="xl:hidden">MwB</span>
+                  )}
                   {item.hasNotification && (
                     <div className="absolute right-3 w-2 h-2 bg-social-notification rounded-full"></div>
                   )}
-                </Button>
-              </Link>
-            );
-          }
-
-          if (item.name === 'Mates with Benefits') {
-            return (
-              <Link key={item.name} to="/mates-with-benefits">
-                <Button
-                  variant={activeNav === item.name ? "secondary" : "ghost"}
-                  className={`w-full justify-start mb-2 relative h-12 ${
-                    activeNav === item.name 
-                      ? "bg-secondary text-secondary-foreground font-medium" 
-                      : "text-muted-foreground hover:text-foreground hover:bg-social-hover"
-                  }`}
-                  onClick={() => setActiveNav(item.name)}
-                >
-                  <Icon className="w-5 h-5 mr-3" />
-                  <span className="hidden xl:inline">{item.name}</span>
-                  <span className="xl:hidden">MwB</span>
-                </Button>
-              </Link>
-            );
-          }
-
-          if (item.name === 'Organization') {
-            return (
-              <Link key={item.name} to="/organization">
-                <Button
-                  variant={activeNav === item.name ? "secondary" : "ghost"}
-                  className={`w-full justify-start mb-2 relative h-12 ${
-                    activeNav === item.name 
-                      ? "bg-secondary text-secondary-foreground font-medium" 
-                      : "text-muted-foreground hover:text-foreground hover:bg-social-hover"
-                  }`}
-                  onClick={() => setActiveNav(item.name)}
-                >
-                  <Icon className="w-5 h-5 mr-3" />
-                  {item.name}
-                </Button>
-              </Link>
-            );
-          }
-
-          if (item.name === 'Notes') {
-            return (
-              <Link key={item.name} to="/notes">
-                <Button
-                  variant={activeNav === item.name ? "secondary" : "ghost"}
-                  className={`w-full justify-start mb-2 relative h-12 ${
-                    activeNav === item.name 
-                      ? "bg-secondary text-secondary-foreground font-medium" 
-                      : "text-muted-foreground hover:text-foreground hover:bg-social-hover"
-                  }`}
-                  onClick={() => setActiveNav(item.name)}
-                >
-                  <Icon className="w-5 h-5 mr-3" />
-                  {item.name}
-                </Button>
-              </Link>
-            );
-          }
-
-          if (item.name === 'Profile') {
-            return (
-              <Link key={item.name} to="/profile">
-                <Button
-                  variant={activeNav === item.name ? "secondary" : "ghost"}
-                  className={`w-full justify-start mb-2 relative h-12 ${
-                    activeNav === item.name 
-                      ? "bg-secondary text-secondary-foreground font-medium" 
-                      : "text-muted-foreground hover:text-foreground hover:bg-social-hover"
-                  }`}
-                  onClick={() => setActiveNav(item.name)}
-                >
-                  <Icon className="w-5 h-5 mr-3" />
-                  {item.name}
                 </Button>
               </Link>
             );
@@ -195,6 +129,16 @@ const ProfileSidebar = () => {
             </Button>
           );
         })}
+        
+        {/* Logout Button */}
+        <Button
+          variant="ghost"
+          className="w-full justify-start mb-2 relative h-12 text-muted-foreground hover:text-destructive hover:bg-destructive/10"
+          onClick={handleSignOut}
+        >
+          <LogOut className="w-5 h-5 mr-3" />
+          Logout
+        </Button>
       </div>
 
       {/* Contacts Section */}
